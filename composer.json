@@ -1,0 +1,44 @@
+{
+  "name": "pdir/contao-theme-helper-bundle",
+  "type":"contao-bundle",
+  "description": "pdir theme helper bundle for Contao 4",
+  "keywords":["contao","theme","template", "tools", "helper"],
+  "homepage": "https://pdir.de",
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Webdesign für Dresden",
+      "homepage": "https://pdir.de",
+      "email" : "develop@pdir.de",
+      "role" : "Developer"
+    }
+  ],
+  "support" : {
+    "email" : "develop@pdir.de",
+    "issues" : "https://github.com/pdir/contao-theme-helper-bundle/issues",
+    "source" : "https://github.com/pdir/contao-theme-helper-bundle"
+  },
+  "require": {
+    "php": ">=7.4.0",
+    "contao/core-bundle": "^4.4"
+  },
+  "conflict": {
+    "contao/core": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pdir\\Contao\\ThemeHelperBundle\\ThemeHelperBundle\\": "src/"
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ]
+  },
+  "extra": {
+    "contao-manager-plugin": "Pdir\\Contao\\ThemeHelperBundle\\ContaoManager\\Plugin"
+  },
+  "config": {
+    "files": "files"
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
+}
