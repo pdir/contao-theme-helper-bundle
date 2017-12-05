@@ -31,6 +31,6 @@
     }
   },
   "extra": {
-    "contao-manager-plugin": "Pdir\\Contao\\ThemeHelperBundle\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "Pdir\\Contao\\ThemeHelperBundle\\Plugin"
   }
 }
