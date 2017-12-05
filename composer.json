@@ -29,8 +29,5 @@
     "psr-4": {
       "Pdir\\Contao\\ThemeHelperBundle\\ThemeHelperBundle\\": "src/"
     }
-  },
-  "extra": {
-    "contao-manager-plugin": "Pdir\\Contao\\ThemeHelperBundle\\ContaoManager\\Plugin"
   }
 }
