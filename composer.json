@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Pdir\\Contao\\ThemeHelperBundle\\ThemeHelperBundle\\": "src/"
+      "Pdir\\Contao\\ThemeHelperBundle\\": "src/"
     }
   },
   "extra": {
