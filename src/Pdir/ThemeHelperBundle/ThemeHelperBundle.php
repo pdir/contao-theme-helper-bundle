@@ -1,7 +1,7 @@
 <?php
 
 /**
- * THEME_NAME for Contao Open Source CMS
+ * pdir theme helper bundle for Contao Open Source CMS
  *
  * Copyright (C) 2017 pdir / digital agentur <develop@pdir.de>
  *
