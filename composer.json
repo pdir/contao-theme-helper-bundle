@@ -1,6 +1,6 @@
 {
   "name": "pdir/contao-theme-helper-bundle",
-  "type":"contao-bundle",
+  "type":"contao-module",
   "description": "pdir theme helper bundle for Contao 4",
   "keywords":["contao","theme","template", "tools", "helper"],
   "homepage": "https://pdir.de",
