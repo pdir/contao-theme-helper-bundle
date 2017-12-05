@@ -27,10 +27,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Pdir\\Contao\\ThemeHelperBundle\\": "src/"
+      "Pdir\\ThemeHelperBundle\\": "src/"
     }
   },
   "extra": {
-    "contao-manager-plugin": "Pdir\\Contao\\ThemeHelperBundle\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "Pdir\\ThemeHelperBundle\\ContaoManager\\Plugin"
   }
 }

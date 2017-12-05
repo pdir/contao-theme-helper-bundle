@@ -1,5 +1,5 @@
 services:
     contao_calendar.listener.insert_tags:
-        class: Pdir\Contao\ThemeHelperBundle\EventListener\InsertTagsListener
+        class: Pdir\ThemeHelperBundle\EventListener\InsertTagsListener
         arguments:
             - "@contao.framework"

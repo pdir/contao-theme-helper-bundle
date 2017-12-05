@@ -14,7 +14,7 @@
  * file that was distributed with this source code.
  */
 declare(strict_types=1);
-namespace Pdir\Contao\ThemeHelperBundle\EventListener;
+namespace Pdir\ThemeHelperBundle\EventListener;
 
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\Events;

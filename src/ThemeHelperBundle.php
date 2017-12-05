@@ -15,7 +15,7 @@
  */
 declare(strict_types = 1);
 
-namespace Pdir\Contao\ThemeHelperBundle;
+namespace Pdir\ThemeHelperBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
