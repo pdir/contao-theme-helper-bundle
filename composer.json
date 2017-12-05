@@ -38,7 +38,5 @@
   },
   "config": {
     "files": "files"
-  },
-  "prefer-stable": false,
-  "minimum-stability": "dev"
+  }
 }
