@@ -53,7 +53,7 @@ class tl_theme_extended extends tl_theme
 		// add buy action if needed
 		if ($row['pdir_th_description'] != '')
 		{
-			$label = '<span><img src="bundles/system/modules/theme_installer/assets/img/buy_theme.png" title="' . $GLOBALS['TL_LANG']['tl_theme']['buyTheme'] . '"' .
+			$label = '<span><img src="bundles/themehelper/img/buy_theme.png" title="' . $GLOBALS['TL_LANG']['tl_theme']['buyTheme'] . '"' .
 				' onclick="Backend.getScrollOffset();Backend.openModalSelector({\'width\':768,\'title\':\'' . $GLOBALS['TL_LANG']['MSC']['buyThemeButtonTitle'] . '\',\'url\':\'https://contao-themes.net/buy-mate.html\',\'id\':\'buyTheme\'});return false"' .
 				' style="position:absolute;margin:10px 0;"></span>' . $label;
 		}
