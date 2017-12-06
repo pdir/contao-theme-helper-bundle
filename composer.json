@@ -28,7 +28,10 @@
   "autoload": {
     "psr-4": {
       "Pdir\\ThemeHelperBundle\\": "src"
-    }
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ]
   },
   "extra": {
     "contao-manager-plugin": "Pdir\\ThemeHelperBundle\\ContaoManager\\Plugin"
