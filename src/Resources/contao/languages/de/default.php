@@ -12,4 +12,3 @@ $GLOBALS['TL_LANG']['tl_theme']['pdir_th_payed_license_text'] = ' // kostenpflic
 $GLOBALS['TL_LANG']['tl_theme']['buyTheme'] = 'Kostenpflichtige Lizenz kaufen.';
 $GLOBALS['TL_LANG']['MSC']['buyThemeConfirm'] = 'Möchten Sie für diesen Theme eine kostenplichtige Lizenz erwerben?';
 $GLOBALS['TL_LANG']['MSC']['buyThemeButtonTitle'] = 'Theme Lizenz kaufen';
-
