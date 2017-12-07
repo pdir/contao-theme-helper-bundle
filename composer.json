@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Pdir\\ThemeHelperBundle\\": "src"
+      "Pdir\\ThemeHelperBundle\\": "src/"
     },
     "classmap": [
       "src/Resources/contao/"
