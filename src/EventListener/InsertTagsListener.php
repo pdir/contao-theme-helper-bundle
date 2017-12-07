@@ -13,9 +13,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-#declare(strict_types=1);
+declare(strict_types=1);
 namespace Pdir\ThemeHelperBundle\EventListener;
 
+use Contao\ArticleModel;
+use Contao\ContentElement;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\Events;
 use Contao\StringUtil;
@@ -31,12 +33,14 @@ class InsertTagsListener
      * @var ContaoFrameworkInterface
      */
     private $framework;
+
     /**
      * @var array
      */
     private $supportedTags = [
         'theme',
     ];
+
     /**
      * Constructor.
      *
@@ -46,6 +50,7 @@ class InsertTagsListener
     {
         $this->framework = $framework;
     }
+
     /**
      * Replaces theme insert tags.
      *
@@ -58,7 +63,7 @@ class InsertTagsListener
         $elements = explode('::', $tag);
         $key = strtolower($elements[0]);
         if (in_array($key, $this->supportedTags, true)) {
-            return $this->replaceThemeInsertTag($key, $elements[1], $elements[2]);
+            return $this->replaceThemeInsertTag($elements[1], $elements[2]);
         }
         return false;
     }
@@ -96,7 +101,7 @@ class InsertTagsListener
     private function generateArticleReplacement(ArticleModel $article)
     {
         /** @var Article $adapter */
-        $adapter = $this->framework->getAdapter(Article::class);
+        $adapter = $this->framework->getAdapter(ContentElement::class);
         return $adapter->getArticle($article);
     }
 }
