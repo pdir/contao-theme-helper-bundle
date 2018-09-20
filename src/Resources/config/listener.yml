@@ -1,5 +1,6 @@
 services:
     theme_helper.listener.insert_tags:
         class: Pdir\ThemeHelperBundle\EventListener\InsertTagsListener
+        public: true
         arguments:
             - "@contao.framework"
