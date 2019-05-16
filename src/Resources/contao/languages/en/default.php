@@ -2,6 +2,7 @@
 
 // theme helper tags
 $GLOBALS['TL_LANG']['tl_article']['pdir_th_tag'] = array('Theme Helper Tag', 'Please select a theme helper tag to use content of this article as insert tag.');
+$GLOBALS['TL_LANG']['tl_article']['pdir_th_domain'] = array('Root Page', 'Please select the root page to use content of this article as insert tag.');
 
 // theme desc & license
 $GLOBALS['TL_LANG']['tl_theme']['pdir_th_description'] = array('Theme description', 'The theme description is provided by theme config.');

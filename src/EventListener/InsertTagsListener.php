@@ -77,14 +77,19 @@ class InsertTagsListener
      */
     private function replaceThemeInsertTag($tagType, $themeTag)
     {
+        $rootPageId = $GLOBALS['objPage']->pid;
+
         $this->framework->initialize();
         switch ($tagType) {
             // get article content by theme helper tag
             case 'content':
                 /** @var ArticleModel $adapter */
                 $adapter = $this->framework->getAdapter(ArticleModel::class);
-                if (null === ($article = $adapter->findOneBy('pdir_th_tag', $themeTag))) {
-                    return '';
+                //echo $themeTag."<br>"; echo $rootPageTitle."<br>";
+                if (null === ($article = $adapter->findOneBy( ['tl_article.pdir_th_tag=?','tl_article.pdir_th_domain=?'] , [$themeTag,$rootPageId] ))) {
+                    if (null === ($article = $adapter->findOneBy('pdir_th_tag', $themeTag))) {
+                        return '';
+                    }
                 }
                 return $this->generateArticleReplacement($article);
                 break;
