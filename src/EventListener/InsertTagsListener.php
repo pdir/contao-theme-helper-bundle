@@ -77,7 +77,7 @@ class InsertTagsListener
      */
     private function replaceThemeInsertTag($tagType, $themeTag)
     {
-        $rootPageId = $GLOBALS['objPage']->pid;
+        $rootPageId = $GLOBALS['objPage']->trail[0];
 
         $this->framework->initialize();
         switch ($tagType) {
