@@ -11,7 +11,7 @@ $GLOBALS['TL_DCA']['tl_theme']['list']['label']['label_callback'] = array('tl_th
 $GLOBALS['TL_DCA']['tl_theme']['palettes']['default'] = str_replace
 (
 	',author',
-	',author,pdir_th_license_domain',
+	',author,pdir_th_license_domain,pdir_th_short_code',
 	$GLOBALS['TL_DCA']['tl_theme']['palettes']['default']
 );
 
