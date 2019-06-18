@@ -1,0 +1,43 @@
+<div class="tl_listing_container">
+  <div id="pdir" class="be_th_check_domain clr">
+
+    <?php if($this->readonly): ?>
+      You can set a Theme Licence in <a href="contao?do=themes">Layout -> Themes</a>.
+    <?php else: ?>
+      <div class="widget">
+        <?= $this->explanation ?>
+      </div>
+      <?php if($this->message): ?>
+        <p class="tl_info"><?= $this->message ?></p><br>
+      <?php endif; ?>
+      <form action="contao?do=thLicence&act=checkDomain&popup=1" id="tl_theme" class="tl_form tl_edit_form" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="FORM_SUBMIT" value="thLicence">
+        <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+        <input type="hidden" name="theme" value="<?= $this->theme ?>">
+        <input type="hidden" name="shortCode" value="<?= $this->shortCode ?>">
+        <div class="clr w50 widget">
+          <h3><label for="ctrl_domain"><?= $this->domainLabel ?><span class="mandatory">*</span></label></h3>
+          <input type="text" name="domain" id="ctrl_domain" class="tl_text" value="" required="" maxlength="255" onfocus="Backend.getScrollOffset()">
+          <p class="tl_help tl_tip" title=""><?= $this->domainTip ?></p>
+        </div>
+        <div class="clr tl_formbody_submit">
+          <div class="tl_submit_container">
+            <button type="submit" name="check" id="save" class="tl_submit" accesskey="s"><?= $this->buttonCheck ?></button>
+            <a id="close" class="close-me tl_submit" accesskey="c">Close</a>
+          </div>
+        </div>
+      </form>
+      <script>
+        var btns = document.querySelector('.btn');
+        document.addEventListener('click', function (event) {
+          // If the clicked element doesn't have the right selector, bail
+          if (!event.target.matches('.close-me')) return;
+
+          // Don't follow the link
+          event.preventDefault();
+          window.parent.location.reload();
+        }, false);
+      </script>
+    </div>
+  <?php endif; ?>
+</div>

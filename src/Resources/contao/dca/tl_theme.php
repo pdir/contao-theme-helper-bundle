@@ -38,6 +38,15 @@ $GLOBALS['TL_DCA']['tl_theme']['fields']['pdir_th_license_domain'] = array
 	'sql'                     => "varchar(128) NOT NULL default ''"
 );
 
+$GLOBALS['TL_DCA']['tl_theme']['fields']['pdir_th_short_code'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_theme']['pdir_th_short_code'],
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => array('tl_class' => 'w50', 'maxlength'=> 32, 'readonly' => true),
+    'sql'                     => "varchar(32) NOT NULL default ''"
+);
+
 class tl_theme_extended extends tl_theme
 {
 	/**
@@ -50,13 +59,18 @@ class tl_theme_extended extends tl_theme
 	 */
 	public function addPreviewImageAndDesc($row, $label)
 	{
+        $themeUrl = 'https://contao-themes.net/';
+        $themeShortCode = $row['pdir_th_short_code'];
+
 		// add buy action if needed
-		if ($row['pdir_th_description'] != '')
-		{
-			$label = '<span><img src="bundles/themehelper/img/buy_theme.png" ' .
+		if ($row['pdir_th_description'] != '') {
+		    if($themeShortCode != '')
+		    {
+		        $themeUrl .= 'buy-' . $row['pdir_th_short_code'] . '.html';
+            }
+			$label = '<span><a href="' . $themeUrl . '" target="_blank" rel="noopener"><img src="bundles/themehelper/img/buy_theme.png" ' .
                 ' title="' . $GLOBALS['TL_LANG']['tl_theme']['buyTheme'] . '"' .
-				' onclick="Backend.getScrollOffset();Backend.openModalSelector({\'width\':768,\'title\':\'' . $GLOBALS['TL_LANG']['MSC']['buyThemeButtonTitle'] . '\',\'url\':\'https://contao-themes.net/buy-mate.html\',\'id\':\'buyTheme\'});return false"' .
-				' style="margin: 10px 10px 10px 0;"></span>' . $label;
+				' style="width:25px;margin: 10px 10px 10px 0;"></a></span>' . $label;
 		}
 
 		// add image
@@ -75,6 +89,12 @@ class tl_theme_extended extends tl_theme
 				$html .= $GLOBALS['TL_LANG']['tl_theme']['pdir_th_payed_license_text'] . $row['pdir_th_license_domain'] .'<br>';
 			else
 				$html .= $GLOBALS['TL_LANG']['tl_theme']['pdir_th_license_text'] . '<br>';
+
+            $html .= '<i class="icon"'.
+                ' title="'.$GLOBALS['TL_LANG']['MSC']['checkDomainButtonTitle'].'"'.
+                ' style="font-style:normal;color:#fff;font-weight:bold;padding:5px;border:1px solid #649d9a;background:#649d9a;"'.
+                ' onclick="Backend.getScrollOffset();Backend.openModalSelector({\'width\':768,\'title\':\'' . $GLOBALS['TL_LANG']['MSC']['checkDomainButtonText'] . '\',\'url\':\'contao?do=thLicence&shortCode='.$themeShortCode.'&popup=1&theme='.$row['id'].'\',\'id\':\'checkDomain\'});return false"'.
+                '">'.$GLOBALS['TL_LANG']['MSC']['checkDomainButtonText'].'</i>';
 
 			// desc
 			$html .= '<div id="themeDesc" style="display:none;line-height:1.2em;margin-top:5px;">';
