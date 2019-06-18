@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_theme']['fields']['pdir_th_short_code'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_theme']['pdir_th_short_code'],
     'exclude'                 => true,
     'inputType'               => 'text',
-    'eval'                    => array('tl_class' => 'w50', 'maxlength'=> 32, 'readonly' => true),
+    'eval'                    => array('tl_class' => 'w50', 'maxlength'=> 32),
     'sql'                     => "varchar(32) NOT NULL default ''"
 );
 
