@@ -11,7 +11,7 @@ $GLOBALS['TL_DCA']['tl_theme']['list']['label']['label_callback'] = array('tl_th
 $GLOBALS['TL_DCA']['tl_theme']['palettes']['default'] = str_replace
 (
 	',author',
-	',author,pdir_th_license_domain',
+	',author,pdir_th_license_domain,pdir_th_short_code',
 	$GLOBALS['TL_DCA']['tl_theme']['palettes']['default']
 );
 
@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_theme']['fields']['pdir_th_short_code'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_theme']['pdir_th_short_code'],
     'exclude'                 => true,
     'inputType'               => 'text',
-    'eval'                    => array('tl_class' => 'w50', 'maxlength'=> 32, 'readonly' => true),
+    'eval'                    => array('tl_class' => 'w50', 'maxlength'=> 32),
     'sql'                     => "varchar(32) NOT NULL default ''"
 );
 
