@@ -82,7 +82,7 @@ class tl_theme_extended extends tl_theme
 			// add info icon
 			$html = '<i class="icon contaoThemesNet" onmouseover="document.getElementById(\'themeDesc\').style.display = \'block\'"'.
 				' onmouseout="document.getElementById(\'themeDesc\').style.display = \'none\'"'.
-				' style="color:#fff;border-radius:50%;font-weight:bold;padding:3px;border:1px solid #649d9a;background:#649d9a;margin-left:10px;">i</i>';
+				' style="color:#fff;border-radius:50%;font-weight:bold;padding:3px;border:1px solid #649d9a;background:#649d9a;margin-left:10px;font-style: inherit;">i</i>';
 
 			// license status
             $html .= '<span class="contaoThemesNet">';
@@ -94,7 +94,7 @@ class tl_theme_extended extends tl_theme
 
             $html .= '<i class="icon contaoThemesNet"'.
                 ' title="'.$GLOBALS['TL_LANG']['MSC']['checkDomainButtonTitle'].'"'.
-                ' style="font-style:normal;color:#fff;font-weight:bold;padding:5px;border:1px solid #649d9a;background:#649d9a;"'.
+                ' style="font-style:normal;color:#fff;font-weight:bold;padding:5px;border:1px solid #649d9a;background:#649d9a;display: inline-block;"'.
                 ' onclick="Backend.getScrollOffset();Backend.openModalSelector({\'width\':768,\'title\':\'' . $GLOBALS['TL_LANG']['MSC']['checkDomainButtonText'] . '\',\'url\':\'contao?do=thLicence&shortCode='.$themeShortCode.'&popup=1&theme='.$row['id'].'\',\'id\':\'checkDomain\'});return false"'.
                 '">'.$GLOBALS['TL_LANG']['MSC']['checkDomainButtonText'].'</i>';
 
