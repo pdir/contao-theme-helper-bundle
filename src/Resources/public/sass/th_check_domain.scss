@@ -1,1 +1,11 @@
 #tl_navigation a.navigation.thLicence { display:none; }
+
+p.note {
+  margin: 15px;
+
+  &.error {
+    &, strong {
+      color: #e11d1d;
+    }
+  }
+}
