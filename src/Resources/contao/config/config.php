@@ -17,26 +17,24 @@
 /**
  * Backend Modules
  */
-array_insert($GLOBALS['BE_MOD']['contaoThemesNet'], 1, array
-(
-    'thLicence' => array
-    (
+array_insert($GLOBALS['BE_MOD']['contaoThemesNet'], 1, [
+    'thLicence' => [
         'callback'          => 'Pdir\\ThemeHelperBundle\\Backend\\Licence',
         'tables'            => [],
-    ),
-));
+    ],
+]);
 
 /**
  * Register hooks
  */
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('theme_helper.listener.insert_tags', 'onReplaceInsertTags');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = ['theme_helper.listener.insert_tags', 'onReplaceInsertTags'];
 
 /**
  * Javascript for Backend
  */
 if (TL_MODE == 'BE')
 {
-    if (!is_array($GLOBALS['TL_CSS']))
+    if (!isset($GLOBALS['TL_CSS']))
     {
         $GLOBALS['TL_CSS'] = [];
     }
