@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Theme Helper Bundle for Contao Open Source CMS
  *
- * Copyright (C) 2017 pdir / digital agentur <develop@pdir.de>
+ * Copyright (C) 2022 pdir GmbH / pdir / digital agentur <develop@pdir.de>
  *
  * @package    pdir/contao-theme-helper-bundle
  * @link       https://github.com/pdir/contao-theme-helper-bundle
@@ -13,7 +15,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-declare(strict_types=1);
+
 namespace Pdir\ThemeHelperBundle\EventListener;
 
 use Contao\ArticleModel;
@@ -60,9 +62,9 @@ class InsertTagsListener
      */
     public function onReplaceInsertTags($tag)
     {
-        $elements = explode('::', $tag);
-        $key = strtolower($elements[0]);
-        if (in_array($key, $this->supportedTags, true)) {
+        $elements = \explode('::', $tag);
+        $key = \strtolower($elements[0]);
+        if (\in_array($key, $this->supportedTags, true)) {
             return $this->replaceThemeInsertTag($elements[1], $elements[2]);
         }
         return false;
