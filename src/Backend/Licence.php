@@ -22,6 +22,7 @@ use Contao\BackendModule;
 use Contao\Environment;
 use Contao\Input;
 use Contao\ThemeModel;
+use Contao\System;
 
 class Licence extends BackendModule
 {
@@ -39,6 +40,7 @@ class Licence extends BackendModule
         $this->Template->shortCode = Input::get('shortCode') ? : Input::post('shortCode');
         $this->Template->theme = Input::get('theme');
         $this->Template->message = null;
+        $this->Template->requestToken = System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue();
 
         switch (Input::get('act')) {
             case 'checkDomain':

@@ -24,7 +24,7 @@
       <?php endif; ?>
       <form action="contao?do=thLicence&act=checkDomain&popup=1" id="tl_theme" class="tl_form tl_edit_form" method="post" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="FORM_SUBMIT" value="thLicence">
-        <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+        <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
         <input type="hidden" name="theme" value="<?= $this->theme ?>">
         <input type="hidden" name="shortCode" value="<?= $this->shortCode ?>">
         <div class="clr w50 widget">
