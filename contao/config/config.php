@@ -14,15 +14,20 @@
  * file that was distributed with this source code.
  */
 
+use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Backend Modules
  */
-array_insert($GLOBALS['BE_MOD']['contaoThemesNet'], 1, [
-    'thLicence' => [
-        'callback'          => 'Pdir\\ThemeHelperBundle\\Backend\\Licence',
-        'tables'            => [],
-    ],
-]);
+if (!isset($GLOBALS['BE_MOD']['contaoThemesNet'])) {
+    $GLOBALS['BE_MOD']['contaoThemesNet'] = [];
+}
+
+$GLOBALS['BE_MOD']['contaoThemesNet']['thLicence'] = [
+    'callback' => 'Pdir\\ThemeHelperBundle\\Backend\\Licence',
+    'tables'  => [],
+];
 
 /**
  * Register hooks
@@ -32,7 +37,7 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = ['theme_helper.listener.insert_tag
 /**
  * Javascript for Backend
  */
-if (TL_MODE == 'BE')
+if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create('')))
 {
     if (!isset($GLOBALS['TL_CSS']))
     {

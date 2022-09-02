@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Theme Helper Bundle for Contao Open Source CMS
  *
- * Copyright (C) 2017 pdir / digital agentur <develop@pdir.de>
+ * Copyright (C) 2022 pdir GmbH / pdir / digital agentur <develop@pdir.de>
  *
  * @package    pdir/contao-theme-helper-bundle
  * @link       https://github.com/pdir/contao-theme-helper-bundle
@@ -13,7 +15,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Pdir\ThemeHelperBundle\DependencyInjection;
+
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -32,7 +36,7 @@ class ThemeHelperExtension extends Extension
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__.'/../../config')
         );
         $loader->load('listener.yml');
         $loader->load('services.yml');

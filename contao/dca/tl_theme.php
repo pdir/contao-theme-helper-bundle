@@ -1,14 +1,16 @@
 <?php
 
+use Contao\StringUtil;
+
 /*
  * Replace label function
  */
-$GLOBALS['TL_DCA']['tl_theme']['list']['label']['label_callback'] = array('tl_theme_extended', 'addPreviewImageAndDesc');
+$GLOBALS['TL_DCA']['tl_theme']['list']['label']['label_callback'] = ['tl_theme_extended', 'addPreviewImageAndDesc'];
 
 /*
  * add fields to pallet
  */
-$GLOBALS['TL_DCA']['tl_theme']['palettes']['default'] = str_replace
+$GLOBALS['TL_DCA']['tl_theme']['palettes']['default'] = \str_replace
 (
 	',author',
 	',author,pdir_th_license_domain,pdir_th_short_code',
@@ -100,7 +102,7 @@ class tl_theme_extended extends tl_theme
 
 			// desc
 			$html .= '<div id="themeDesc" class="contaoThemesNet" style="display:none;line-height:1.2em;margin-top:5px;">';
-			$html .= \StringUtil::decodeEntities($row['pdir_th_description']);
+			$html .= StringUtil::decodeEntities($row['pdir_th_description']);
 			$html .= '</div>';
 			$label = $label . $html;
 		}
