@@ -10,7 +10,11 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
-## [1.5.0](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.0) – 2022-02-09
+## [1.5.1](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.1) – 2022-09-05
+
+- [Fixed] Remove deprecated request token
+
+## [1.5.0](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.0) – 2022-09-02
 
 - [Changed] Increase Contao version to 5 only
 
