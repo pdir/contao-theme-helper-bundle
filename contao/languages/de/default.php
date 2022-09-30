@@ -25,3 +25,6 @@ $GLOBALS['TL_LANG']['MSC']['th_explanation'] = '<p><strong>Hier kannst du deine 
 $GLOBALS['TL_LANG']['MSC']['th_insert_domain'] = 'Bitte Domain angeben';
 $GLOBALS['TL_LANG']['MSC']['th_domain_tip'] = 'Hier kannst du die Domain angeben. (Bsp. contao-themes.net oder meissen.online, ohne http(s)://)';
 $GLOBALS['TL_LANG']['MSC']['th_button_check'] = 'Check Domain';
+
+$GLOBALS['TL_LANG']['MSC']['th_readonly_message'] = 'Bitte bearbeiten Sie das Theme und tragen im Feld <strong>Theme Code</strong> den entsprechenden Theme Code ein.<br><br>MATE Theme: <strong>mate</strong><br>ODD Theme: <strong>odd</strong><br>NATURE Theme: <strong>nature</strong><br>0.1 Theme: <strong>0.1</strong><br>CONVERT Theme: <strong>convert</strong><br><br>Danach sollten Sie Ihre Domain registrieren können.<br><br>Detaillierte Informationen finden Sie auch auf:<a href="https://docs.contao-themes.net/#/" target="_blank" rel="noopener" style="color:orange;font-weight:700;">docs.contao-themes.net</a>.';
+$GLOBALS['TL_LANG']['MSC']['th_domain_note'] = 'Bitte geben Sie die Domain <strong>ohne http(s):// und www</strong> ein, z. B. meinedomain.de. Subdomains müssen explizit angegeben werden, z. B. shop.meinedomain.de.';

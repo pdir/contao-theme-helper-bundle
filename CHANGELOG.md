@@ -10,6 +10,11 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
+## [1.5.2](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.2) – 2022-09-30
+
+- [Fixed] Optimize domain check
+- [Changed] Add correct translation for en
+
 ## [1.5.1](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.1) – 2022-09-05
 
 - [Fixed] Remove deprecated request token

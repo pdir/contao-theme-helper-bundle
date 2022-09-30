@@ -3,17 +3,7 @@
 
     <?php if($this->readonly): ?>
       <p style="font-size:16px;line-height:22px;">
-        Bitte bearbeiten Sie das Theme und tragen im Feld <strong>Theme Code</strong> den entsprechenden Theme Code ein.<br><br>
-
-        MATE Theme: <strong>mate</strong><br>
-        ODD Theme: <strong>odd</strong><br>
-        NATURE Theme: <strong>nature</strong><br>
-        0.1 Theme: <strong>0.1</strong><br>
-        CONVERT Theme: <strong>convert</strong>
-
-        <br><br>Danach sollten Sie Ihre Domain registrieren können.<br><br>
-        Detaillierte Informationen finden Sie auch auf:
-        <a href="https://docs.contao-themes.net/#/" target="_blank" rel="noopener" style="color:orange;font-weight:700;">docs.contao-themes.net</a>.
+        <?= $GLOBALS['TL_LANG']['MSC']['th_readonly_message'] ?>
       </p>
     <?php else: ?>
       <div class="widget">
@@ -32,8 +22,9 @@
           <input type="text" name="domain" id="ctrl_domain" class="tl_text" value="" required="" maxlength="255" onfocus="Backend.getScrollOffset()">
           <p class="tl_help tl_tip" title=""><?= $this->domainTip ?></p>
         </div>
-        <p class="note clr">Bitte geben Sie die Domain <strong>ohne http(s):// und www</strong> ein, z. B. meinedomain.de. Subdomains
-        müssen explizit angegeben werden, z. B. shop.meinedomain.de.</p>
+        <p class="note clr">
+          <?= $GLOBALS['TL_LANG']['MSC']['th_domain_note'] ?>
+        </p>
         <div class="clr tl_formbody_submit">
           <div class="tl_submit_container">
             <button type="submit" name="check" id="save" class="tl_submit" accesskey="s"><?= $this->buttonCheck ?></button>
@@ -48,7 +39,7 @@
 
           // Don't follow the link
           event.preventDefault();
-          window.parent.location.reload();
+          window.top.location.reload();
         }, false);
 
         document.getElementById('save').addEventListener('click', function (e) {
@@ -60,6 +51,7 @@
           }
         }, false);
       </script>
+      <?php if ($this->reloadPage): ?><script>setTimeout(function() {window.top.location.reload();}, 3000);</script><?php endif; ?>
     </div>
   <?php endif; ?>
 </div>

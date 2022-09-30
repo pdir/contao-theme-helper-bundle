@@ -26,7 +26,7 @@ use Contao\System;
 
 class Licence extends BackendModule
 {
-    protected string $strTemplate = 'be_th_check_domain';
+    protected $strTemplate = 'be_th_check_domain';
 
     /**
      * Generate the module
@@ -38,9 +38,10 @@ class Licence extends BackendModule
         $this->Template->domainTip = $GLOBALS['TL_LANG']['MSC']['th_domain_tip'];
         $this->Template->buttonCheck = $GLOBALS['TL_LANG']['MSC']['th_button_check'];
         $this->Template->shortCode = Input::get('shortCode') ? : Input::post('shortCode');
-        $this->Template->theme = Input::get('theme');
+        $this->Template->theme = Input::get('theme') ? : Input::post('theme');;
         $this->Template->message = null;
         $this->Template->requestToken = System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue();
+        $this->Template->reloadPage = false;
 
         switch (Input::get('act')) {
             case 'checkDomain':
@@ -54,13 +55,27 @@ class Licence extends BackendModule
 
                 $url .= \http_build_query($params);
 
+                error_reporting(E_ALL);
+                ini_set('display_errors','1');
+
                 $ch = \curl_init($url);
                 \curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept:application/json, Content-Type:application/json']);
                 \curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-                \curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                \curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                \curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+                $result = \curl_exec($ch);
+                $errNo = \curl_errno($ch);
+                $err = \curl_error($ch);
+                \curl_close($ch);
+
+                if (0 !== $errNo) {
+                    $this->Template->message = $err . " [Error No $errNo]";
+                    break;
+                }
 
                 // response
-                $response = \json_decode(\curl_exec($ch), true);
+                $response = \json_decode($result, true);
 
                 if(isset($response['message']) && Input::post('theme'))
                 {
@@ -71,8 +86,9 @@ class Licence extends BackendModule
                         $objTheme = ThemeModel::findById(Input::post('theme'));
                         $objTheme->pdir_th_license_domain = $response['domain'];
                         $objTheme->save();
-                    }
 
+                        $this->Template->reloadPage = true;
+                    }
 
                     $this->Template->message = $response['message'];
                     break;
