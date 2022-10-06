@@ -1,17 +1,17 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_user_group']['palettes']['default'] = str_replace('formp;', 'formp;{pdir_theme_helper_legend},themeHelperArticleFields,themeHelperContentElementFields;', $GLOBALS['TL_DCA']['tl_user_group']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_user_group']['palettes']['default'] = str_replace('formp;', 'formp;{pdir_theme_helper_legend},pdirThemeHelperArticleFields,pdirThemeHelperContentElementFields;', $GLOBALS['TL_DCA']['tl_user_group']['palettes']['default']);
 
-$GLOBALS['TL_DCA']['tl_user_group']['fields']['themeHelperArticleFields'] = [
+$GLOBALS['TL_DCA']['tl_user_group']['fields']['pdirThemeHelperArticleFields'] = [
     'exclude' => true,
     'inputType' => 'checkbox',
     'options' => ['pdir_th_tag', 'pdir_th_domain'],
-    'reference' => &$GLOBALS['TL_LANG']['tl_user']['themeHelperArticleFieldsValues'],
+    'reference' => &$GLOBALS['TL_LANG']['tl_user']['pdirThemeHelperArticleFieldsValues'],
     'eval' => ['multiple' => true],
     'sql' => "blob NULL",
 ];
 
-$GLOBALS['TL_DCA']['tl_user_group']['fields']['themeHelperContentElementFields'] = [
+$GLOBALS['TL_DCA']['tl_user_group']['fields']['pdirThemeHelperContentElementFields'] = [
     'exclude' => true,
     'inputType' => 'checkbox',
     'options_callback' => function() {
