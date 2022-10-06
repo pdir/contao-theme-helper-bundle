@@ -13,17 +13,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+declare(strict_types=1);
+
 namespace Pdir\ThemeHelperBundle\DependencyInjection;
+
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-/**
- * Adds the bundle services to the container.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
-class ThemeHelperExtension extends Extension
+
+class PdirThemeHelperExtension extends Extension
 {
     /**
      * {@inheritdoc}

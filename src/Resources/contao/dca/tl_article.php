@@ -1,5 +1,9 @@
 <?php
 
+use Pdir\ThemeHelperBundle\EventListener\ArticleFieldPermissionsListener;
+
+$GLOBALS['TL_DCA']['tl_article']['config']['onload_callback'][] = [ArticleFieldPermissionsListener::class, '__invoke'];
+
 /**
  * Add fields to tl_content
  */

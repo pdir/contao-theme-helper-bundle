@@ -15,7 +15,7 @@
  */
 namespace Pdir\ThemeHelperBundle\ContaoManager;
 
-use Pdir\ThemeHelperBundle\ThemeHelperBundle;
+use Pdir\ThemeHelperBundle\PdirThemeHelperBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
@@ -34,7 +34,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(ThemeHelperBundle::class)
+            BundleConfig::create(PdirThemeHelperBundle::class)
                 ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
