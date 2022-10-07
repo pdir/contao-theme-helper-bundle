@@ -39,5 +39,5 @@ if (TL_MODE == 'BE')
         $GLOBALS['TL_CSS'] = [];
     }
 
-    $GLOBALS['TL_CSS'][] =  'bundles/themehelper/sass/th_check_domain.scss||static';
+    $GLOBALS['TL_CSS'][] =  'bundles/pdirthemehelper/sass/th_check_domain.scss||static';
 }
