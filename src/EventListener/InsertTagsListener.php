@@ -27,6 +27,7 @@ use Contao\StringUtil;
 /**
  * Handles insert tags for themes.
  *
+ * @Hook("replaceInsertTags")
  * @author     Mathias Arzberger <develop@pdir.de>
  */
 class InsertTagsListener
@@ -53,16 +54,18 @@ class InsertTagsListener
         $this->framework = $framework;
     }
 
-    /**
-     * Replaces theme insert tags.
-     *
-     * @param string $tag
-     *
-     * @return string|false
-     */
-    public function onReplaceInsertTags($tag)
+    public function __invoke(
+        string $insertTag,
+        bool $useCache,
+        string $cachedValue,
+        array $flags,
+        array $tags,
+        array $cache,
+        int $_rit,
+        int $_cnt
+    )
     {
-        $elements = \explode('::', $tag);
+        $elements = \explode('::', $insertTag);
         $key = \strtolower($elements[0]);
         if (\in_array($key, $this->supportedTags, true)) {
             return $this->replaceThemeInsertTag($elements[1], $elements[2]);
@@ -77,7 +80,7 @@ class InsertTagsListener
      *
      * @return string
      */
-    private function replaceThemeInsertTag($tagType, $themeTag)
+    private function replaceThemeInsertTag($tagType, $themeTag): bool|string
     {
         $rootPageId = $GLOBALS['objPage']->trail[0];
 
