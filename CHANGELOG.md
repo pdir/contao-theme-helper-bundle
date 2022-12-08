@@ -10,6 +10,7 @@ Types of changes
 )
 
 ## [1.4.1](https://github.com/pdir/contao-theme-helper-bundle/tree/4.x) – 2022-12-08
+
 - [Fixed] Fix two missing lines in DCA tl_articles to show permission checkboxes in tl_user_groups.
 
 ## [1.4.0](https://github.com/pdir/contao-theme-helper-bundle/tree/1.4.0) – 2021-07-26
