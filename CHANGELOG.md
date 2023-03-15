@@ -10,6 +10,10 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
+## [1.5.3](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.2) – 2023-03-15
+
+- [Fixed] curl_init error by replacing CURL with Symfony\Component\HttpClient\HttpClient
+
 ## [1.5.2](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.2) – 2022-09-30
 
 - [Fixed] Optimize domain check

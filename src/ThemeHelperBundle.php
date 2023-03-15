@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-/**
- * pdir theme helper bundle for Contao Open Source CMS
+/*
+ * theme components bundle for Contao Open Source CMS
  *
- * Copyright (C) 2022 pdir GmbH / pdir / digital agentur <develop@pdir.de>
+ * Copyright (C) 2023 pdir / digital agentur <develop@pdir.de>
  *
- * @package    pdir/contao-theme-helper-bundle
- * @link       https://github.com/pdir/contao-theme-helper-bundle
+ * @package    contao-themes-net/theme-components-bundle
+ * @link       https://github.com/contao-themes-net/theme-components-bundle
  * @license    LGPL-3.0+
- * @author     Mathias Arzberger <develop@pdir.de>
+ * @author     pdir GmbH <develop@pdir.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Pdir\ThemeHelperBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 /**
  * Configures the ThemeHelper bundle.
  *
