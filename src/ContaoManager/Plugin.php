@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * Theme Helper Bundle for Contao Open Source CMS
  *
- * Copyright (C) 2022 pdir GmbH / pdir / digital agentur <develop@pdir.de>
+ * Copyright (C) 2023 pdir GmbH / pdir / digital agentur <develop@pdir.de>
  *
  * @package    pdir/contao-theme-helper-bundle
  * @link       https://github.com/pdir/contao-theme-helper-bundle
@@ -18,11 +18,11 @@ declare(strict_types=1);
 
 namespace Pdir\ThemeHelperBundle\ContaoManager;
 
-use Pdir\ThemeHelperBundle\ThemeHelperBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
-use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
+use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Pdir\ThemeHelperBundle\ThemeHelperBundle;
 
 /**
  * Plugin for the Contao Manager.

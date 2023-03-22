@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * Theme Helper Bundle for Contao Open Source CMS
  *
- * Copyright (C) 2022 pdir GmbH / pdir / digital agentur <develop@pdir.de>
+ * Copyright (C) 2023 pdir GmbH / pdir / digital agentur <develop@pdir.de>
  *
  * @package    pdir/contao-theme-helper-bundle
  * @link       https://github.com/pdir/contao-theme-helper-bundle
@@ -21,13 +21,13 @@ namespace Pdir\ThemeHelperBundle\EventListener;
 use Contao\ArticleModel;
 use Contao\ContentElement;
 use Contao\CoreBundle\Framework\ContaoFramework;
-use Contao\Events;
-use Contao\StringUtil;
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 
 /**
  * Handles insert tags for themes.
  *
  * @Hook("replaceInsertTags")
+ *
  * @author     Mathias Arzberger <develop@pdir.de>
  */
 class InsertTagsListener
@@ -46,32 +46,24 @@ class InsertTagsListener
 
     /**
      * Constructor.
-     *
-     * @param ContaoFramework $framework
      */
     public function __construct(ContaoFramework $framework)
     {
         $this->framework = $framework;
     }
 
-    public function __invoke(
-        string $insertTag,
-        bool $useCache,
-        string $cachedValue,
-        array $flags,
-        array $tags,
-        array $cache,
-        int $_rit,
-        int $_cnt
-    )
+    public function __invoke(string $insertTag, bool $useCache, string $cachedValue, array $flags, array $tags, array $cache, int $_rit, int $_cnt)
     {
-        $elements = \explode('::', $insertTag);
-        $key = \strtolower($elements[0]);
+        $elements = explode('::', $insertTag);
+        $key = strtolower($elements[0]);
+
         if (\in_array($key, $this->supportedTags, true)) {
             return $this->replaceThemeInsertTag($elements[1], $elements[2]);
         }
+
         return false;
     }
+
     /**
      * Replaces an event-related insert tag.
      *
@@ -85,33 +77,34 @@ class InsertTagsListener
         $rootPageId = $GLOBALS['objPage']->trail[0];
 
         $this->framework->initialize();
+
         switch ($tagType) {
             // get article content by theme helper tag
             case 'content':
                 /** @var ArticleModel $adapter */
                 $adapter = $this->framework->getAdapter(ArticleModel::class);
                 //echo $themeTag."<br>"; echo $rootPageTitle."<br>";
-                if (null === ($article = $adapter->findOneBy( ['tl_article.pdir_th_tag=?','tl_article.pdir_th_domain=?'] , [$themeTag,$rootPageId] ))) {
+                if (null === ($article = $adapter->findOneBy(['tl_article.pdir_th_tag=?', 'tl_article.pdir_th_domain=?'], [$themeTag, $rootPageId]))) {
                     if (null === ($article = $adapter->findOneBy('pdir_th_tag', $themeTag))) {
                         return '';
                     }
                 }
+
                 return $this->generateArticleReplacement($article);
-                break;
         }
+
         return false;
     }
+
     /**
      * Generates the article replacement string.
-     *
-     * @param ArticleModel $article
      *
      * @return string
      */
     private function generateArticleReplacement(ArticleModel $article)
     {
-        /** @var Article $adapter */
         $adapter = $this->framework->getAdapter(ContentElement::class);
+
         return $adapter->getArticle($article);
     }
 }

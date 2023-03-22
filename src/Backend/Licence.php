@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * Theme Helper Bundle for Contao Open Source CMS
  *
- * Copyright (C) 2022 pdir GmbH // pdir / digital agentur <https://pdir.de>
+ * Copyright (C) 2023 pdir GmbH / pdir / digital agentur <develop@pdir.de>
  *
  * @package    pdir/contao-theme-helper-bundle
  * @link       https://github.com/pdir/contao-theme-helper-bundle
@@ -21,24 +21,25 @@ namespace Pdir\ThemeHelperBundle\Backend;
 use Contao\BackendModule;
 use Contao\Environment;
 use Contao\Input;
-use Contao\ThemeModel;
 use Contao\System;
+use Contao\ThemeModel;
+use Symfony\Component\HttpClient\HttpClient;
 
 class Licence extends BackendModule
 {
     protected $strTemplate = 'be_th_check_domain';
 
     /**
-     * Generate the module
+     * Generate the module.
      */
-    protected function compile()
+    protected function compile(): void
     {
         $this->Template->explanation = $GLOBALS['TL_LANG']['MSC']['th_explanation'];
         $this->Template->domainLabel = $GLOBALS['TL_LANG']['MSC']['th_insert_domain'];
         $this->Template->domainTip = $GLOBALS['TL_LANG']['MSC']['th_domain_tip'];
         $this->Template->buttonCheck = $GLOBALS['TL_LANG']['MSC']['th_button_check'];
-        $this->Template->shortCode = Input::get('shortCode') ? : Input::post('shortCode');
-        $this->Template->theme = Input::get('theme') ? : Input::post('theme');;
+        $this->Template->shortCode = Input::get('shortCode') ?: Input::post('shortCode');
+        $this->Template->theme = Input::get('theme') ?: Input::post('theme');
         $this->Template->message = null;
         $this->Template->requestToken = System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue();
         $this->Template->reloadPage = false;
@@ -46,61 +47,58 @@ class Licence extends BackendModule
         switch (Input::get('act')) {
             case 'checkDomain':
                 // make request to pdir api
-                $url = 'https://pdir.de/api/themes?';
 
-                $params = [
+                $options = [
+                    'base_uri' => 'https://pdir.de/api/',
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json',
+                    ],
+                ];
+
+                $queryParams = [
                     'domain' => Input::post('domain'),
                     'ip' => Environment::get('server'),
                 ];
 
-                $url .= \http_build_query($params);
+                $url = 'themes?';
 
-                error_reporting(E_ALL);
-                ini_set('display_errors','1');
+                $client = HttpClient::create($options);
 
-                $ch = \curl_init($url);
-                \curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept:application/json, Content-Type:application/json']);
-                \curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-                \curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                \curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                // engage
+                $response = $client->request('GET', $url, ['query' => $queryParams]);
+                // gets the HTTP status code of the response
+                $statusCode = $response->getStatusCode();
 
-                $result = \curl_exec($ch);
-                $errNo = \curl_errno($ch);
-                $err = \curl_error($ch);
-                \curl_close($ch);
-
-                if (0 !== $errNo) {
-                    $this->Template->message = $err . " [Error No $errNo]";
+                if (200 !== $statusCode) {
+                    $this->Template->message = $statusCode." [HTTP Status $statusCode]";
                     break;
                 }
 
-                // response
-                $response = \json_decode($result, true);
+                // get response as json
+                $content = $response->toArray();
 
-                if(isset($response['message']) && Input::post('theme'))
-                {
+                if (isset($content['message']) && Input::post('theme')) {
                     // Domain is registered
-                    if($response['message'] == 'Domain registered' && $response['domain'])
-                    {
+                    if ('Domain registered' === $content['message'] && $content['domain']) {
                         /** @var ThemeModel $objTheme */
                         $objTheme = ThemeModel::findById(Input::post('theme'));
-                        $objTheme->pdir_th_license_domain = $response['domain'];
+                        $objTheme->pdir_th_license_domain = $content['domain'];
                         $objTheme->save();
 
                         $this->Template->reloadPage = true;
                     }
 
-                    $this->Template->message = $response['message'];
+                    $this->Template->message = $content['message'];
                     break;
                 }
 
                 break;
+
             default:
-                if(!Input::get('shortCode'))
-                {
+                if (!Input::get('shortCode')) {
                     $this->Template->readonly = true;
                 }
-
         }
     }
 }
