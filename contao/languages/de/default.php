@@ -1,12 +1,27 @@
 <?php
 
-// be mod
-$GLOBALS['TL_LANG']['MOD']['contaoThemesNet'][0] = "contao-themes.net";
-$GLOBALS['TL_LANG']['MOD']['thLicence'][0] = "Theme Lizenz";
+declare(strict_types=1);
+
+/*
+ * Theme Helper Bundle for Contao Open Source CMS
+ *
+ * Copyright (C) 2023 pdir GmbH / pdir / digital agentur <develop@pdir.de>
+ *
+ * @package    pdir/contao-theme-helper-bundle
+ * @link       https://github.com/pdir/contao-theme-helper-bundle
+ * @license    LGPL-3.0+
+ * @author     Mathias Arzberger <develop@pdir.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+$GLOBALS['TL_LANG']['MOD']['contaoThemesNet'][0] = 'contao-themes.net';
+$GLOBALS['TL_LANG']['MOD']['thLicence'][0] = 'Theme Lizenz';
 
 // theme helper tags
 $GLOBALS['TL_LANG']['tl_article']['pdir_th_tag'] = ['Theme Helper Tag', 'Bitte wählen Sie einen Theme Helper Tag um den Inhalt dieses Artikels als Insert Tag zu nutzen.'];
-$GLOBALS['TL_LANG']['tl_article']['pdir_th_domain'] = ['Seitenname','Bitte wählen Sie die entsprechende Seite (Seitenname des Webseiten-Startpunktes) aus um den Inhalt dieses Artikels als Insert Tag zu nutzen.'];
+$GLOBALS['TL_LANG']['tl_article']['pdir_th_domain'] = ['Seitenname', 'Bitte wählen Sie die entsprechende Seite (Seitenname des Webseiten-Startpunktes) aus um den Inhalt dieses Artikels als Insert Tag zu nutzen.'];
 
 // theme desc & license
 $GLOBALS['TL_LANG']['tl_theme']['pdir_th_description'] = ['Beschreibung', 'Die Theme Beschreibung wird durch die Theme Einstellungen vorgegeben.'];
