@@ -3,4 +3,16 @@ services:
         class: Pdir\ThemeHelperBundle\EventListener\InsertTagsListener
         public: true
         arguments:
-            - "@contao.framework"
+            - '@contao.framework'
+
+    theme_helper.listener.article_field_permissions:
+        class: Pdir\ThemeHelperBundle\EventListener\ArticleFieldPermissionsListener
+        public: true
+        arguments:
+            - '@request_stack'
+
+    theme_helper.listener.content_field_permissions:
+        class: Pdir\ThemeHelperBundle\EventListener\ContentFieldPermissionsListener
+        public: true
+        arguments:
+            - '@request_stack'

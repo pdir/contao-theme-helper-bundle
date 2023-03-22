@@ -30,11 +30,6 @@ $GLOBALS['BE_MOD']['contaoThemesNet']['thLicence'] = [
 ];
 
 /**
- * Register hooks
- */
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = ['theme_helper.listener.insert_tags', 'onReplaceInsertTags'];
-
-/**
  * Javascript for Backend
  */
 if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create('')))
@@ -44,5 +39,10 @@ if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendReques
         $GLOBALS['TL_CSS'] = [];
     }
 
-    $GLOBALS['TL_CSS'][] =  'bundles/themehelper/sass/th_check_domain.scss||static';
+    $GLOBALS['TL_CSS'][] =  'bundles/pdirthemehelper/sass/th_check_domain.scss||static';
 }
+
+/**
+ * Permissions
+ */
+$GLOBALS['TL_PERMISSIONS'][] = 'themeHelperArticleFields';

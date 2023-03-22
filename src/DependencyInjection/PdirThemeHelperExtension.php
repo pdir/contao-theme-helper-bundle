@@ -22,12 +22,8 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-/**
- * Adds the bundle services to the container.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
-class ThemeHelperExtension extends Extension
+
+class PdirThemeHelperExtension extends Extension
 {
     /**
      * {@inheritdoc}

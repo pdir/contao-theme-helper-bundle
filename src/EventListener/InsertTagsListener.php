@@ -21,6 +21,7 @@ namespace Pdir\ThemeHelperBundle\EventListener;
 use Contao\ArticleModel;
 use Contao\ContentElement;
 use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\Events;
 use Contao\StringUtil;
 
