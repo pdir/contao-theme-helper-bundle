@@ -19,12 +19,13 @@ declare(strict_types=1);
 namespace Pdir\ThemeHelperBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 /**
  * Configures the ThemeHelper bundle.
  *
  * @author Mathias Arzberger <develop@pdir.de>
  */
-class ThemeHelperBundle extends Bundle
+class PdirThemeHelperBundle extends Bundle
 {
     public function getPath(): string
     {
