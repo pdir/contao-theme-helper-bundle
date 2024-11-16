@@ -1,0 +1,12 @@
+#tl_navigation a.navigation.thLicence {
+  display: none;
+}
+
+p.note {
+  margin: 15px;
+}
+p.note.error, p.note.error strong {
+  color: #e11d1d;
+}
+
+/*# sourceMappingURL=th_check_domain.css.map */

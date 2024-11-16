@@ -44,5 +44,5 @@ if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendReques
         $GLOBALS['TL_CSS'] = [];
     }
 
-    $GLOBALS['TL_CSS'][] =  'bundles/themehelper/sass/th_check_domain.scss||static';
+    $GLOBALS['TL_CSS'][] =  'bundles/themehelper/sass/th_check_domain.css||static';
 }
