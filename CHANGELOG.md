@@ -10,6 +10,10 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
+## [1.5.4](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.4) – 2024-11-18
+
+- [Fixed] Fix theme helper insert tags
+
 ## [1.5.3](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.3) – 2024-11-16
 
 - [Fixed] Use local CSS preprocessors

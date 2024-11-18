@@ -20,16 +20,12 @@ namespace Pdir\ThemeHelperBundle\EventListener;
 
 use Contao\ArticleModel;
 use Contao\ContentElement;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\Events;
 use Contao\StringUtil;
 
-/**
- * Handles insert tags for themes.
- *
- * @Hook("replaceInsertTags")
- * @author     Mathias Arzberger <develop@pdir.de>
- */
+#[AsHook('replaceInsertTags')]
 class InsertTagsListener
 {
     /**
@@ -54,18 +50,9 @@ class InsertTagsListener
         $this->framework = $framework;
     }
 
-    public function __invoke(
-        string $insertTag,
-        bool $useCache,
-        string $cachedValue,
-        array $flags,
-        array $tags,
-        array $cache,
-        int $_rit,
-        int $_cnt
-    )
+    public function __invoke(string $tag)
     {
-        $elements = \explode('::', $insertTag);
+        $elements = \explode('::', $tag);
         $key = \strtolower($elements[0]);
         if (\in_array($key, $this->supportedTags, true)) {
             return $this->replaceThemeInsertTag($elements[1], $elements[2]);
