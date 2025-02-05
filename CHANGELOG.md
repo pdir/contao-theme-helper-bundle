@@ -10,6 +10,11 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
+
+## [1.5.5](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.5) – 2025-02-05
+
+- [Fixed] error in licence form in Contao 5.4
+
 ## [1.5.4](https://github.com/pdir/contao-theme-helper-bundle/tree/1.5.4) – 2024-11-18
 
 - [Fixed] Fix theme helper insert tags
