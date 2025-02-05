@@ -12,7 +12,7 @@
       <?php if($this->message): ?>
         <p class="tl_info"><?= $this->message ?></p><br>
       <?php endif; ?>
-      <form action="contao?do=thLicence&act=checkDomain&popup=1" id="tl_theme" class="tl_form tl_edit_form" method="post" enctype="application/x-www-form-urlencoded">
+      <form action="contao?do=thLicence&act=checkDomain&popup=1" id="tl_theme" class="tl_form tl_edit_form" method="post" enctype="application/x-www-form-urlencoded" data-turbo="false">
         <input type="hidden" name="FORM_SUBMIT" value="thLicence">
         <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
         <input type="hidden" name="theme" value="<?= $this->theme ?>">
